@@ -29,4 +29,10 @@ export class SeminarraumComponent implements OnInit {
     );
   }
 
+  public deleteSeminarraum(raumnummer: number | undefined) {
+    this.seminarraumService.deleteSeminarraum(raumnummer).subscribe(
+      (response: void) => {this.getAllSeminarraums();}
+    );
+  }
+
 }
