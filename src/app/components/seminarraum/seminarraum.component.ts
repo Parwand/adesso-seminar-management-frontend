@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Seminarraum } from 'src/app/interfaces/Seminarraum';
 import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.service';
 
@@ -22,8 +23,8 @@ export class SeminarraumComponent implements OnInit {
     );
   }
 
-  public addSeminarraum(seminarraum: Seminarraum) {
-    this.seminarraumService.addSeminarraum(seminarraum).subscribe(
+  public addSeminarraum(addForm: NgForm) {
+    this.seminarraumService.addSeminarraum(addForm.value).subscribe(
       (response: Seminarraum) => {this.getAllSeminarraums();}
     );
   }
