@@ -19,4 +19,8 @@ export class SeminarraumService {
   public addSeminarraum(seminarraum: Seminarraum): Observable<Seminarraum> {
     return this.httpClient.post<Seminarraum>(`${this.apiUrl}/add`, seminarraum);
   }
+
+  public deleteSeminarraum(raumnummer: number | undefined): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/delete/${raumnummer}`);
+  }
 }
