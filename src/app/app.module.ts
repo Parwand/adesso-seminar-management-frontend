@@ -6,6 +6,9 @@ import { SeminarraumComponent } from './components/seminarraum/seminarraum.compo
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
+import { RouterModule, Routes } from '@angular/router';
+
+export const appRoutes: Routes = [{path: "about", component: AboutComponent}]
 
 
 @NgModule({
@@ -17,7 +20,8 @@ import { AboutComponent } from './components/about/about.component';
     AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
