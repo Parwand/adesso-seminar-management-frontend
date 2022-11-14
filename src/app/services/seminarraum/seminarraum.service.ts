@@ -15,4 +15,8 @@ export class SeminarraumService {
   public getAllSeminarraums(): Observable<Seminarraum[]> {
     return this.httpClient.get<Seminarraum[]>(`${this.apiUrl}/all`);
   }
+
+  public addSeminarraum(seminarraum: Seminarraum): Observable<Seminarraum> {
+    return this.httpClient.post<Seminarraum>(`${this.apiUrl}/add`, seminarraum);
+  }
 }
