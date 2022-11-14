@@ -8,7 +8,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 
-export const appRoutes: Routes = [{path: "about", component: AboutComponent}]
+export const appRoutes: Routes = [
+  {path: "about", component: AboutComponent},
+  {path: "seminarraum", component: SeminarraumComponent}
+]
 
 
 @NgModule({
