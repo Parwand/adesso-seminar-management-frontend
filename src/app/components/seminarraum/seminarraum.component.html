@@ -32,6 +32,7 @@
             <td>{{seminarraum?.raumnummer}}</td>
             <td>{{seminarraum?.maximalePersonenanzahl}}</td>
             <td>{{seminarraum?.ausstattung}}</td>
+            <td><button class="btn btn-sm btn-outline-danger" type="submit" (click)="deleteSeminarraum(seminarraum?.raumnummer)">Löschen</button></td>
         </tr>
     </tbody>
 </table>
