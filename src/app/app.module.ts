@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 export const appRoutes: Routes = [
   {path: "about", component: AboutComponent},
@@ -26,7 +27,8 @@ export const appRoutes: Routes = [
   imports: [
     BrowserModule, 
     RouterModule.forRoot(appRoutes, {enableTracing: true}), 
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
