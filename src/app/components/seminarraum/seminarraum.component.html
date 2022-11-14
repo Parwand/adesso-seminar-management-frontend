@@ -1,6 +1,11 @@
 <h5 class="text text-dark">Einen neuen Raum hinzufügen</h5>
 <form #addForm="ngForm" (ngSubmit)="addSeminarraum(addForm)">
     <div>
+        <label for="name">Name</label>
+        <input type="text" ngModel name="name" class="form-control" id="name" placeholder="name" required="">
+    </div>
+
+    <div>
         <label for="maximalePersonenanzahl">MaximalePersonenanzahl</label>
         <input type="number" ngModel name="maximalePersonenanzahl" class="form-control" id="maximalePersonenanzahl" placeholder="maximalePersonenanzahl" required="">
     </div>
