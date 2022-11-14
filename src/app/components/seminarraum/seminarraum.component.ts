@@ -22,4 +22,10 @@ export class SeminarraumComponent implements OnInit {
     );
   }
 
+  public addSeminarraum(seminarraum: Seminarraum) {
+    this.seminarraumService.addSeminarraum(seminarraum).subscribe(
+      (response: Seminarraum) => {this.getAllSeminarraums();}
+    );
+  }
+
 }
