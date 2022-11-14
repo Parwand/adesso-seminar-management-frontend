@@ -22,6 +22,7 @@
     <thead>
         <tr>
             <th>Raumnummer</th>
+            <th>Name</th>
             <th>MaximalePersonenanzahl</th>
             <th>Ausstattung</th>
             <td></td>
@@ -30,6 +31,7 @@
     <tbody>
         <tr *ngFor="let seminarraum of seminarraums">
             <td>{{seminarraum?.raumnummer}}</td>
+            <td>{{seminarraum?.name}}</td>
             <td>{{seminarraum?.maximalePersonenanzahl}}</td>
             <td>{{seminarraum?.ausstattung}}</td>
             <td><button class="btn btn-sm btn-outline-danger" type="submit" (click)="deleteSeminarraum(seminarraum?.raumnummer)">Löschen</button></td>
