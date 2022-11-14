@@ -25,7 +25,7 @@ export class SeminarraumComponent implements OnInit {
 
   public addSeminarraum(addForm: NgForm) {
     this.seminarraumService.addSeminarraum(addForm.value).subscribe(
-      (response: Seminarraum) => {this.getAllSeminarraums();}
+      (response: Seminarraum) => {this.getAllSeminarraums(); addForm.reset()}
     );
   }
 
