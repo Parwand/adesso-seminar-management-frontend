@@ -10,6 +10,7 @@ import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.ser
 })
 export class SeminarraumComponent implements OnInit {
   public seminarraums: Seminarraum[];
+  public deSeminarraum: Seminarraum = {raumnummer: 0,  name: "", maximalePersonenanzahl:0, ausstattung: ""};
 
   constructor(private seminarraumService: SeminarraumService) { }
 
@@ -33,6 +34,10 @@ export class SeminarraumComponent implements OnInit {
     this.seminarraumService.deleteSeminarraum(raumnummer).subscribe(
       (response: void) => {this.getAllSeminarraums();}
     );
+  }
+
+  public onDeleteModal(seminarraum: Seminarraum): void{
+    this.deSeminarraum = seminarraum;
   }
 
 }
