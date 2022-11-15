@@ -26,7 +26,7 @@
             <td>{{seminar.voraussetzung}}</td>
             <td>{{seminar.seminarraum?.raumnummer}}</td>
             <td><button type="button" class="btn btn-sm btn-outline-secondary">Bearbeiten</button></td>
-            <td><button type="button" class="btn btn-sm btn-outline-danger">Löschen</button></td>
+            <td><button (click)="onToggleModal(seminar)" type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Löschen</button></td>
         </tr>
     </tbody>
 </table>
