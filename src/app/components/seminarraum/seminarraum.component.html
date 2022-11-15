@@ -79,7 +79,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button (click)="onEditeSeminarraum(editForm)" type="submit"  class="btn btn-primary" data-dismiss="modal">Speichern</button>
+                    <button [disabled]="editForm.invalid" (click)="onEditeSeminarraum(editForm)" type="submit"  class="btn btn-primary" data-dismiss="modal">Speichern</button>
                 </div>
             </form>
         </div>
