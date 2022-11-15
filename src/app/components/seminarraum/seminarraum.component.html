@@ -27,6 +27,7 @@
             <th>MaximalePersonenanzahl</th>
             <th>Ausstattung</th>
             <td></td>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,9 @@
             <td>{{seminarraum?.name}}</td>
             <td>{{seminarraum?.maximalePersonenanzahl}}</td>
             <td>{{seminarraum?.ausstattung}}</td>
+            <td>
+                <button (click)="onToggleModal(seminarraum)" class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#editModal">Bearbeiten</button>
+            </td>
             <td>
                 <button (click)="onToggleModal(seminarraum)" class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#deleteModal">Löschen</button>
             </td>
