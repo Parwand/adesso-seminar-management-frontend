@@ -27,7 +27,7 @@ export class SeminarComponent implements OnInit {
     );
   }
 
-  public onDeleteSeminar(seminarnummer: number) {
+  public onDeleteSeminar(seminarnummer: number | undefined) {
     this.seminarService.deleteSeminar(seminarnummer).subscribe(
       {
         next:(value: void) => console.log(value),

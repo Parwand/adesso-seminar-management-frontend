@@ -15,7 +15,7 @@ export class SeminarService {
     return this.httpClient.get<Seminar[]>(`${this.apiUrl}/seminar/all`);
   }
 
-  public deleteSeminar(seminarnummer: number): Observable<void> {
+  public deleteSeminar(seminarnummer: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/seminar/delete/${seminarnummer}`);
   }
 }
