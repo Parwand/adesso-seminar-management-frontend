@@ -10,6 +10,7 @@ import { SeminarService } from 'src/app/services/seminar/seminar.service';
 })
 export class SeminarComponent implements OnInit {
   public seminars: Seminar[];
+  public onToggleSeminar: Seminar;
 
   constructor(private seminarService: SeminarService) { }
 
@@ -36,5 +37,7 @@ export class SeminarComponent implements OnInit {
   }
 
   
-
+  public onToggleModal(seminar: Seminar) : void {
+    this.onToggleSeminar = seminar;
+  }
 }
