@@ -17,7 +17,7 @@ export class SeminarComponent implements OnInit {
     this.getAllSeminars();
   }
 
-  getAllSeminars() {
+  private getAllSeminars() {
     this.seminarService.getAllSeminars().subscribe(
       {
         next:(value: Seminar[]) => this.seminars = value,
@@ -25,5 +25,16 @@ export class SeminarComponent implements OnInit {
       }
     );
   }
+
+  public onDeleteSeminar(seminarnummer: number) {
+    this.seminarService.deleteSeminar(seminarnummer).subscribe(
+      {
+        next:(value: void) => console.log(value),
+        error: (e: HttpErrorResponse) => console.log(e.message)
+      }
+    );
+  }
+
+  
 
 }
