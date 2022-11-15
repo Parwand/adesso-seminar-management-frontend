@@ -36,7 +36,7 @@ export class SeminarraumComponent implements OnInit {
     );
   }
 
-  public onDeleteModal(seminarraum: Seminarraum): void{
+  public onToggleModal(seminarraum: Seminarraum): void{
     this.deSeminarraum = seminarraum;
   }
 
