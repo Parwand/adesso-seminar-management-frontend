@@ -1,9 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Seminar } from 'src/app/interfaces/Seminar';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeminarService {
+  private apiUrl = environment.baseUrl;
+  constructor(private httpClient: HttpClient) { }
 
-  constructor() { }
+  public getAllSeminars(): Observable<Seminar[]> {
+    return this.httpClient.get<Seminar[]>(`${this.apiUrl}/seminar/all`);
+  }
 }
