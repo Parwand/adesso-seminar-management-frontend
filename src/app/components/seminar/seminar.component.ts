@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { SeminarService } from 'src/app/services/seminar/seminar.service';
@@ -18,7 +19,10 @@ export class SeminarComponent implements OnInit {
 
   getAllSeminars() {
     this.seminarService.getAllSeminars().subscribe(
-      (response: Seminar[]) => {this.seminars = response}
+      {
+        next:(value: Seminar[]) => this.seminars = value,
+        error: (e: HttpErrorResponse) => console.log(e.message)
+      }
     );
   }
 
