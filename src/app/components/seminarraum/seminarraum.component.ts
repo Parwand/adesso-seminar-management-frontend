@@ -36,6 +36,12 @@ export class SeminarraumComponent implements OnInit {
     );
   }
 
+  public onEditeSeminarraum(editeForm: NgForm): void {
+    this.seminarraumService.editSeminarraum(editeForm.value).subscribe(
+      (response: Seminarraum) => {this.getAllSeminarraums();}
+    );
+  }
+
   public onToggleModal(seminarraum: Seminarraum): void{
     this.onToggleSeminarraum = seminarraum;
   }
