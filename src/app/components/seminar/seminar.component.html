@@ -1,1 +1,28 @@
-<p>seminar works!</p>
+<table class="table table-borderes table-striped">
+    <thead>
+        <tr>
+            <th>Seminarnummer</th>
+            <th>SeminarTitle</th>
+            <th>Beginn</th>
+            <th>Ende</th>
+            <th>Kursinhalt</th>
+            <th>Teilnehmeranzahl</th>
+            <th>Seminarleiter</th>
+            <th>Voraussetzung</th>
+            <th>Raumnummer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let seminar of seminars">
+            <td>{{seminar.seminarnummer}}</td>
+            <td>{{seminar.seminarTitle}}</td>
+            <td>{{seminar.beginn}}</td>
+            <td>{{seminar.ende}}</td>
+            <td>{{seminar.kursinhalt}}</td>
+            <td>{{seminar.teilnehmeranzahl}}</td>
+            <td>{{seminar.seminarleiter}}</td>
+            <td>{{seminar.voraussetzung}}</td>
+            <td>{{seminar.seminarraum?.raumnummer}}</td>
+        </tr>
+    </tbody>
+</table>
