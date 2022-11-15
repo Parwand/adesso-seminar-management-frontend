@@ -30,7 +30,7 @@ export class SeminarComponent implements OnInit {
   public onDeleteSeminar(seminarnummer: number | undefined) {
     this.seminarService.deleteSeminar(seminarnummer).subscribe(
       {
-        next:(value: void) => console.log(value),
+        next:(value: void) => {console.log(value); this.getAllSeminars();},
         error: (e: HttpErrorResponse) => console.log(e.message)
       }
     );
