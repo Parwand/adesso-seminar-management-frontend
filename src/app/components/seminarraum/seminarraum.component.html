@@ -15,6 +15,7 @@
         <input type="text" ngModel name="ausstattung" class="form-control" id="ausstattung" placeholder="ausstattung" required="">
     </div>
     <button [disabled]="addForm.invalid" type="submit" class="mt-2 btn btn-sm btn-primary m-2">Speichern</button>
+    <button type="reset" class="mt-2 btn btn-sm btn-secondary m-2">Abbrechen</button>
 </form>
 
 <br>
@@ -34,7 +35,31 @@
             <td>{{seminarraum?.name}}</td>
             <td>{{seminarraum?.maximalePersonenanzahl}}</td>
             <td>{{seminarraum?.ausstattung}}</td>
-            <td><button class="btn btn-sm btn-outline-danger" type="submit" (click)="deleteSeminarraum(seminarraum?.raumnummer)">Löschen</button></td>
+            <td>
+                <button (click)="onDeleteModal(seminarraum)" class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#deleteModal">Löschen</button>
+            </td>
         </tr>
     </tbody>
 </table>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Wollen Sie den Seminarraum <span class="text-white text-bg-danger">{{deSeminarraum.name}} </span> löschen? 
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+        <button type="submit" (click)="deleteSeminarraum(deSeminarraum.raumnummer)" class="btn btn-primary" data-dismiss="modal">Löschen</button>
+    </div>
+    </div>
+</div>
+</div>
+
