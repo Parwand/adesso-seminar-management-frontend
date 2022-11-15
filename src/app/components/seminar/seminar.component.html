@@ -10,6 +10,8 @@
             <th>Seminarleiter</th>
             <th>Voraussetzung</th>
             <th>Raumnummer</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +25,8 @@
             <td>{{seminar.seminarleiter}}</td>
             <td>{{seminar.voraussetzung}}</td>
             <td>{{seminar.seminarraum?.raumnummer}}</td>
+            <td><button type="button" class="btn btn-sm btn-outline-secondary">Bearbeiten</button></td>
+            <td><button type="button" class="btn btn-sm btn-outline-danger">Löschen</button></td>
         </tr>
     </tbody>
 </table>
