@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Seminar } from 'src/app/interfaces/Seminar';
+import { SeminarService } from 'src/app/services/seminar/seminar.service';
 
 @Component({
   selector: 'app-seminar',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seminar.component.css']
 })
 export class SeminarComponent implements OnInit {
+  public seminars: Seminar[];
 
-  constructor() { }
+  constructor(private seminarService: SeminarService) { }
 
   ngOnInit(): void {
+    this.getAllSeminars();
+  }
+
+  getAllSeminars() {
+    this.seminarService.getAllSeminars().subscribe(
+      (response: Seminar[]) => {this.seminars = response}
+    );
   }
 
 }
