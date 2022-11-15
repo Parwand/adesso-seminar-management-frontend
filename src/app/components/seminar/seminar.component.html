@@ -30,3 +30,26 @@
         </tr>
     </tbody>
 </table>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Wollen Sie das Seminar <span class="text-dark text-secondary">{{onToggleSeminar?.seminarTitle}} </span> löschen? 
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            <button type="submit" (click)="onDeleteSeminar(onToggleSeminar?.seminarnummer)" class="btn btn-primary" data-dismiss="modal">Löschen</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    
