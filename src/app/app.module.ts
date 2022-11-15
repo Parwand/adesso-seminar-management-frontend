@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SeminarComponent } from './components/seminar/seminar.component';
 
 export const appRoutes: Routes = [
+  {path:"", component: SeminarComponent}, 
   {path: "about", component: AboutComponent},
   {path: "seminarraum", component: SeminarraumComponent}
 ]
