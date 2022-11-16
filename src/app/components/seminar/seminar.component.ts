@@ -32,6 +32,7 @@ export class SeminarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSeminars();
+    this.getAllSeminarraums();
   }
 
   private getAllSeminars() {
@@ -65,5 +66,15 @@ export class SeminarComponent implements OnInit {
 
   public onToggleModal(seminar: Seminar) : void {
     this.onToggleSeminar = seminar;
+  }
+
+  public getAllSeminarraums() {
+    this.seminarraumService.getAllSeminarraums().subscribe(
+      {
+        next: (value: Seminarraum[]) => {this.seminarraums = value},
+        error: (e: HttpErrorResponse) => {console.log(e.message);
+        },
+      }
+    );
   }
 }
