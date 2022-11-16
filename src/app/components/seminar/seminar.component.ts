@@ -56,7 +56,6 @@ export class SeminarComponent implements OnInit {
       }
     );
   }
-
   
   public onToggleModal(seminar: Seminar) : void {
     this.onToggleSeminar = seminar;
