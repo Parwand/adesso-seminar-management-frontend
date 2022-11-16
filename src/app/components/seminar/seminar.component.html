@@ -105,8 +105,8 @@
                     <input type="text" ngModel name="voraussetzung" class="form-control" id="add-voraussetzung">
                 </div>
                 <div>
-                    <label for="add-seminarraum">Raumnummer</label>
-                    <select name="seminarraum" id="seminarraum">
+                    <label for="add-seminarraum">Raumnummer</label><br>
+                    <select ngModel name="seminarraum" id="seminarraum">
                         <option *ngFor="let seminar of seminarraums">
                             {{seminar.raumnummer}}
                         </option>
