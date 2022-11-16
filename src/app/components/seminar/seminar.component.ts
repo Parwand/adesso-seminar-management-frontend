@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { Seminarraum } from 'src/app/interfaces/Seminarraum';
 import { SeminarService } from 'src/app/services/seminar/seminar.service';
+import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.service';
 
 @Component({
   selector: 'app-seminar',
@@ -26,7 +27,8 @@ export class SeminarComponent implements OnInit {
 
   public seminarraums: Seminarraum[];
 
-  constructor(private seminarService: SeminarService) { }
+  constructor(private seminarService: SeminarService,
+              private seminarraumService: SeminarraumService) { }
 
   ngOnInit(): void {
     this.getAllSeminars();
