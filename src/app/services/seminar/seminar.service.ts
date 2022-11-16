@@ -15,6 +15,10 @@ export class SeminarService {
     return this.httpClient.get<Seminar[]>(`${this.apiUrl}/seminar/all`);
   }
 
+  public addSeminar(seminar: Seminar): Observable<Seminar> {
+    return this.httpClient.post<Seminar>(`${this.apiUrl}/seminar/add`, seminar);
+  }
+
   public deleteSeminar(seminarnummer: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/seminar/delete/${seminarnummer}`);
   }
