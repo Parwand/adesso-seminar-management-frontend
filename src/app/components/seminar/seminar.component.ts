@@ -48,7 +48,7 @@ export class SeminarComponent implements OnInit {
     console.log(addForm.value);
     this.seminarService.addSeminar(addForm.value).subscribe(
      {
-      next: (value: Seminar) => {this.getAllSeminars(); console.log(value);
+      next: (value: Seminar) => {this.getAllSeminars(); console.log(value); addForm.reset()
       }, 
       error: (e: HttpErrorResponse) => {console.log(e.message);
       }
