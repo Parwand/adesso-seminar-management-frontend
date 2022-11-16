@@ -45,6 +45,7 @@ export class SeminarComponent implements OnInit {
   }
 
   public onAddSeminar(addForm: NgForm) {
+    console.log(addForm.value);
     this.seminarService.addSeminar(addForm.value).subscribe(
      {
       next: (value: Seminar) => {this.getAllSeminars(); console.log(value);
