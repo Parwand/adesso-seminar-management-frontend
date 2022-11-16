@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Seminar } from 'src/app/interfaces/Seminar';
+import { Seminarraum } from 'src/app/interfaces/Seminarraum';
 import { SeminarService } from 'src/app/services/seminar/seminar.service';
 
 @Component({
@@ -22,6 +23,8 @@ export class SeminarComponent implements OnInit {
     voraussetzung: "string",
     seminarraum: {raumnummer: 0,  name: "", maximalePersonenanzahl:0, ausstattung: ""}
   }
+
+  public seminarraums: Seminarraum[];
 
   constructor(private seminarService: SeminarService) { }
 

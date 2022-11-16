@@ -106,7 +106,12 @@
                 </div>
                 <div>
                     <label for="add-seminarraum">Raumnummer</label>
-                    <input type="text" ngModel name="seminarraum.raumnummer" class="form-control" id="add-seminarraum">
+                    <select name="seminarraum" id="seminarraum">
+                        <option *ngFor="let seminar of seminars">
+                            {{seminar.raumnummer}}
+                        </option>
+                    </select>
+                    <input type="number" ngModel name="seminarraum" class="form-control" id="add-seminarraum">
                 </div>
                 <!-- modal-footer -->
                 <div class="modal-footer">
