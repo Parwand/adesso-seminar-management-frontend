@@ -26,7 +26,7 @@
             <td>{{seminar.seminarleiter}}</td>
             <td>{{seminar.voraussetzung}}</td>
             <td>{{seminar.seminarraum?.raumnummer}}</td>
-            <td><button type="button" class="btn btn-sm btn-outline-secondary">Bearbeiten</button></td>
+            <td><button (click)="onToggleModal(seminar)" type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#editeSeminarModal">Bearbeiten</button></td>
             <td><button (click)="onToggleModal(seminar)" type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Löschen</button></td>
         </tr>
     </tbody>
@@ -116,6 +116,73 @@
                 <!-- modal-footer -->
                 <div class="modal-footer">
                     <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Hinzufügen</button>
+                </div>
+            </form>
+        </div>
+        
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editeSeminarModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!-- modal-content -->
+        <div class="modal-content">
+        <!-- modal-header -->
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-body">
+            <form #editeForm="ngForm" (ngSubmit)="onAddSeminar(editeForm)">
+                <div>
+                    <label for="add-seminarnummer"></label>
+                    <input type="hidden" ngModel = {{onToggleSeminar.seminarnummer}} name="seminarnummer" class="form-control" id="add-seminarnummer" required="">
+                </div>
+                <div>
+                    <label for="add-seminarTitle">SeminarTitle</label>
+                    <input type="text" ngModel = {{onToggleSeminar.seminarTitle}} name="seminarTitle" class="form-control" id="add-seminarTitle" required="">
+                </div>
+                <div>
+                    <label for="add-beginn">Beginn</label>
+                    <input type="datetime-local" ngModel = {{onToggleSeminar.beginn}} name="beginn" class="form-control" id="add-beginn" required="">
+                </div>
+                <div>
+                    <label for="add-ende">Ende</label>
+                    <input type="datetime-local" ngModel = {{onToggleSeminar.ende}} name="ende" class="form-control" id="add-ende" required="">
+                </div>
+                <div>
+                    <label for="add-kursinhalt">Kursinhalt</label>
+                    <input type="text" ngModel = {{onToggleSeminar.kursinhalt}} name="kursinhalt" class="form-control" id="add-kursinhalt" required="">
+                </div>
+                <div>
+                    <label for="add-teilnehmeranzahl">Teilnehmeranzahl</label>
+                    <input type="number" ngModel = {{onToggleSeminar.teilnehmeranzahl}} name="teilnehmeranzahl" class="form-control" id="add-teilnehmeranzahl">
+                </div>
+                <div>
+                    <label for="add-seminarleiter">Seminarleiter</label>
+                    <input type="text" ngModel = {{onToggleSeminar.seminarleiter}} name="seminarleiter" class="form-control" id="add-seminarleiter" required="">
+                </div>
+                <div>
+                    <label for="add-voraussetzung">Voraussetzung</label>
+                    <input type="text" ngModel = {{onToggleSeminar.voraussetzung}} name="voraussetzung" class="form-control" id="add-voraussetzung" required="">
+                </div>
+                <div>
+                    <label for="add-seminarraum">Raumnummer</label><br>
+                    <select ngModel name="seminarraum" id="seminarraum" required="">
+                        <option *ngFor="let seminarraum of seminarraums"
+                        value="{seminarnummer: {{seminarraum.raumnummer}}, name: '{{seminarraum.name}}', maximalePersonenanzahl: {{seminarraum.maximalePersonenanzahl}}, ausstattung: '{{seminarraum.ausstattung}}'}">
+                            {{seminarraum.raumnummer}}
+                        </option>
+                    </select>
+                </div>
+                <!-- modal-footer -->
+                <div class="modal-footer">
+                    <button [disabled]="editeForm.invalid" type="submit" class="btn btn-primary">Speicher</button>
                 </div>
             </form>
         </div>
