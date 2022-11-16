@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { SeminarService } from 'src/app/services/seminar/seminar.service';
 
@@ -34,6 +35,16 @@ export class SeminarComponent implements OnInit {
         next:(value: Seminar[]) => this.seminars = value,
         error: (e: HttpErrorResponse) => console.log(e.message)
       }
+    );
+  }
+
+  public onAddSeminar(addForm: NgForm) {
+    this.seminarService.addSeminar(addForm.value).subscribe(
+     {
+      next: (value: Seminar) => {this.getAllSeminars();}, 
+      error: (e: HttpErrorResponse) => {console.log(e.message);
+      }
+     }
     );
   }
 
