@@ -41,7 +41,8 @@ export class SeminarComponent implements OnInit {
   public onAddSeminar(addForm: NgForm) {
     this.seminarService.addSeminar(addForm.value).subscribe(
      {
-      next: (value: Seminar) => {this.getAllSeminars();}, 
+      next: (value: Seminar) => {this.getAllSeminars(); console.log(value);
+      }, 
       error: (e: HttpErrorResponse) => {console.log(e.message);
       }
      }
@@ -56,7 +57,7 @@ export class SeminarComponent implements OnInit {
       }
     );
   }
-  
+
   public onToggleModal(seminar: Seminar) : void {
     this.onToggleSeminar = seminar;
   }
