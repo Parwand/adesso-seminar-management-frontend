@@ -56,6 +56,18 @@ export class SeminarComponent implements OnInit {
     );
   }
 
+  public onUpdateSeminar(editeForm: NgForm) {
+    console.log(editeForm.value);
+    this.seminarService.updateSeminar(editeForm.value).subscribe(
+     {
+      next: (value: Seminar) => {this.getAllSeminars(); console.log(value); editeForm.reset()
+      }, 
+      error: (e: HttpErrorResponse) => {console.log(e.message);
+      }
+     }
+    );
+  }
+
   public onDeleteSeminar(seminarnummer: number | undefined) {
     this.seminarService.deleteSeminar(seminarnummer).subscribe(
       {
