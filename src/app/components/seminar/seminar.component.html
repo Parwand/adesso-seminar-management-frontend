@@ -43,14 +43,14 @@
             </button>
         </div>
         <div class="modal-body">
-            Wollen Sie das Seminar <span class="text-bg-dark">{{onToggleSeminar?.seminarTitle}} </span>&nbsp; löschen? 
+            Wollen Sie das Seminar <span class="text-bg-dark">{{onToggleSeminar.seminarTitle}} </span>&nbsp; löschen? 
             <br><br>
             <span class="text-bg-dark">Warnung:</span>&nbsp;<span class="text text-bg-danger">Alle Buchungen in diesem Seminar werden auch mitgelöscht</span>
 
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-            <button type="submit" (click)="onDeleteSeminar(onToggleSeminar?.seminarnummer)" class="btn btn-primary" data-dismiss="modal">Löschen</button>
+            <button type="submit" (click)="onDeleteSeminar(onToggleSeminar.seminarnummer)" class="btn btn-primary" data-dismiss="modal">Löschen</button>
         </div>
         </div>
     </div>
