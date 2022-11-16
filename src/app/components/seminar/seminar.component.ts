@@ -10,7 +10,17 @@ import { SeminarService } from 'src/app/services/seminar/seminar.service';
 })
 export class SeminarComponent implements OnInit {
   public seminars: Seminar[];
-  public onToggleSeminar: Seminar;
+  public onToggleSeminar: Seminar = {
+    seminarnummer: 0,
+    seminarTitle: "string",
+    beginn: new Date(),
+    ende: new Date(),
+    kursinhalt: "string",
+    teilnehmeranzahl: 2,
+    seminarleiter: "string",
+    voraussetzung: "string",
+    seminarraum: {raumnummer: 0,  name: "", maximalePersonenanzahl:0, ausstattung: ""}
+  }
 
   constructor(private seminarService: SeminarService) { }
 
