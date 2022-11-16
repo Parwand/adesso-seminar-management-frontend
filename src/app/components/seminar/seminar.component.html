@@ -74,23 +74,23 @@
             <form #addForm="ngForm" (ngSubmit)="onAddSeminar(addForm)">
                 <div>
                     <label for="add-seminarnummer"></label>
-                    <input type="hidden" ngModel name="seminarnummer" class="form-control" id="add-seminarnummer">
+                    <input type="hidden" ngModel name="seminarnummer" class="form-control" id="add-seminarnummer" required="">
                 </div>
                 <div>
                     <label for="add-seminarTitle">SeminarTitle</label>
-                    <input type="text" ngModel name="seminarTitle" class="form-control" id="add-seminarTitle">
+                    <input type="text" ngModel name="seminarTitle" class="form-control" id="add-seminarTitle" required="">
                 </div>
                 <div>
                     <label for="add-beginn">Beginn</label>
-                    <input type="datetime-local" ngModel name="beginn" class="form-control" id="add-beginn">
+                    <input type="datetime-local" ngModel name="beginn" class="form-control" id="add-beginn" required="">
                 </div>
                 <div>
                     <label for="add-ende">Ende</label>
-                    <input type="datetime-local" ngModel name="ende" class="form-control" id="add-ende">
+                    <input type="datetime-local" ngModel name="ende" class="form-control" id="add-ende" required="">
                 </div>
                 <div>
                     <label for="add-kursinhalt">Kursinhalt</label>
-                    <input type="text" ngModel name="kursinhalt" class="form-control" id="add-kursinhalt">
+                    <input type="text" ngModel name="kursinhalt" class="form-control" id="add-kursinhalt" required="">
                 </div>
                 <div>
                     <label for="add-teilnehmeranzahl">Teilnehmeranzahl</label>
@@ -98,15 +98,15 @@
                 </div>
                 <div>
                     <label for="add-seminarleiter">Seminarleiter</label>
-                    <input type="text" ngModel name="seminarleiter" class="form-control" id="add-seminarleiter">
+                    <input type="text" ngModel name="seminarleiter" class="form-control" id="add-seminarleiter" required="">
                 </div>
                 <div>
                     <label for="add-voraussetzung">Voraussetzung</label>
-                    <input type="text" ngModel name="voraussetzung" class="form-control" id="add-voraussetzung">
+                    <input type="text" ngModel name="voraussetzung" class="form-control" id="add-voraussetzung" required="">
                 </div>
                 <div>
                     <label for="add-seminarraum">Raumnummer</label><br>
-                    <select ngModel name="seminarraum" id="seminarraum">
+                    <select ngModel name="seminarraum" id="seminarraum" required="">
                         <option *ngFor="let seminarraum of seminarraums"
                         value="{seminarnummer: {{seminarraum.raumnummer}}, name: '{{seminarraum.name}}', maximalePersonenanzahl: {{seminarraum.maximalePersonenanzahl}}, ausstattung: '{{seminarraum.ausstattung}}'}">
                             {{seminarraum.raumnummer}}
