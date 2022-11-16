@@ -19,6 +19,10 @@ export class SeminarService {
     return this.httpClient.post<Seminar>(`${this.apiUrl}/seminar/add`, seminar);
   }
 
+  public updateSeminar(seminar: Seminar): Observable<Seminar> {
+    return this.httpClient.put<Seminar>(`${this.apiUrl}/seminar/update`, seminar);
+  }
+
   public deleteSeminar(seminarnummer: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/seminar/delete/${seminarnummer}`);
   }
