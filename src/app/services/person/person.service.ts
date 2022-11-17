@@ -24,10 +24,10 @@ export class PersonService {
     return this.httpClient.post<void>(`${this.apiUrl}/person/buchung/stornieren`, params);
   }
 
-  public seminarBuchen(seminarnummer: number, personId: number): Observable<void> {
+  public seminarBuchen(seminarnummer: number, personId: number): Observable<string> {
     const params: HttpParams = new HttpParams()
     .set("seminar", seminarnummer)
     .set("personId", personId);
-    return this.httpClient.post<void>(`${this.apiUrl}/person/buchung/stornieren`, params);
+    return this.httpClient.post<string>(`${this.apiUrl}/person/buchung/stornieren`, params);
   }
 }
