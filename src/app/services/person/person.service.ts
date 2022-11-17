@@ -28,6 +28,6 @@ export class PersonService {
     const params: HttpParams = new HttpParams()
     .set("seminar", seminarnummer)
     .set("personId", personId);
-    return this.httpClient.post<string>(`${this.apiUrl}/person/buchung/stornieren`, params);
+    return this.httpClient.post<string>(`${this.apiUrl}/person/seminar/buchen`, params);
   }
 }
