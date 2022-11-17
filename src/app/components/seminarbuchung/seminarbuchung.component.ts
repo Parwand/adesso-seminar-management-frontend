@@ -17,7 +17,7 @@ export class SeminarbuchungComponent implements OnInit {
   }
 
   public getBuchungen(): void {
-    this.personService.getBuchungenByPersonId(1).subscribe({ 
+    this.personService.getBuchungenByPersonId(8).subscribe({ 
       next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
