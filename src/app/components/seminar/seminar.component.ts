@@ -60,8 +60,10 @@ export class SeminarComponent implements OnInit {
   }
 
   public onUpdateSeminar(editeForm: NgForm) {
-    console.log(editeForm.value);
-    this.seminarService.updateSeminar(editeForm.value).subscribe(
+    let seminar: Seminar = editeForm.value;
+    let seminarraum: Seminarraum = {raumnummer: editeForm.value.seminarraum, name: "", maximalePersonenanzahl: 2, ausstattung: ""}
+    seminar.seminarraum = seminarraum;
+    this.seminarService.updateSeminar(seminar).subscribe(
      {
       next: (value: Seminar) => {this.getAllSeminars(); console.log(value); editeForm.reset()
       }, 
