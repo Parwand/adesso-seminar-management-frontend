@@ -1,7 +1,7 @@
 import { Seminarraum } from "./Seminarraum";
 
 export interface Seminar {
-    seminarnummer?: number;
+    seminarnummer: number;
     seminarTitle?: string;
     beginn?: Date;
     ende?: Date;
