@@ -1,1 +1,17 @@
-<p>seminarbuchung works!</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Buchungsnummer</td>
+            <td>Buchungsdatum</td>
+            <td>Seminar</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let seminarbuchung of seminarbuchungen">
+            <td>{{seminarbuchung.buchungsnummer}}</td>
+            <td>{{seminarbuchung.buchungsdatum}}</td>
+            <td>{{seminarbuchung.seminar.seminarTitle}}</td>
+        </tr>
+    </tbody>
+</table>
