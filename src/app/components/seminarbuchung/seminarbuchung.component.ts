@@ -22,8 +22,16 @@ export class SeminarbuchungComponent implements OnInit {
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
       }
+    });
+  }
+  
+  public onSeminarbuchungStornieren(buchungsnummer: string, personId: number): void {    
+    this.personService.seminarbuchungStornieren(buchungsnummer, personId).subscribe({
+      next: (value: void) => {this.getBuchungen(); console.log(value);
+      }, 
+      error: (e: HttpErrorResponse) =>{console.log(e.message);
+      }
     }
-      
     );
   }
 
