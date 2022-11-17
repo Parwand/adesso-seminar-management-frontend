@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SeminarComponent } from './components/seminar/seminar.component';
+import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuchung.component';
 
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent}, 
@@ -25,7 +26,8 @@ export const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    SeminarComponent
+    SeminarComponent,
+    SeminarbuchungComponent
   ],
   imports: [
     BrowserModule, 
