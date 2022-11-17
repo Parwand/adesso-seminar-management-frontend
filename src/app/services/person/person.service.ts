@@ -13,6 +13,6 @@ export class PersonService {
   constructor(private httpClient: HttpClient) { }
 
   public getBuchungenByPersonId(personId: number):  Observable<Seminarbuchung[]>{
-    return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen`);
+    return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
   }
 }
