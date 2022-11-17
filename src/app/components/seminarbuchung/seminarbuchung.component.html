@@ -4,6 +4,7 @@
             <td>Buchungsnummer</td>
             <td>Buchungsdatum</td>
             <td>Seminar</td>
+            <td></td>
         </tr>
 
     </thead>
@@ -12,6 +13,7 @@
             <td>{{seminarbuchung.buchungsnummer}}</td>
             <td>{{seminarbuchung.buchungsdatum}}</td>
             <td>{{seminarbuchung.seminar.seminarTitle}}</td>
+            <td><button type="submit" (click)="onSeminarbuchungStornieren(seminarbuchung.buchungsnummer, 8);" class="btn btn-sm btn-outline-danger">Stornieren</button></td>
         </tr>
     </tbody>
 </table>
