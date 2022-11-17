@@ -141,7 +141,7 @@
         </div>
         <!-- modal-body -->
         <div class="modal-body">
-            <form #editeForm="ngForm" (ngSubmit)="onAddSeminar(editeForm)">
+            <form #editeForm="ngForm">
                 <div>
                     <label for="add-seminarnummer"></label>
                     <input type="hidden" ngModel = {{onToggleSeminar.seminarnummer}} name="seminarnummer" class="form-control" id="add-seminarnummer" required="">
@@ -186,7 +186,7 @@
                 <!-- modal-footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button [disabled]="editeForm.invalid" type="submit" class="btn btn-primary">Speicher</button>
+                    <button [disabled]="editeForm.invalid"  (click)="onAddSeminar(editeForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Speicher</button>
                 </div>
             </form>
         </div>
