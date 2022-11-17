@@ -46,10 +46,12 @@ export class SeminarComponent implements OnInit {
   }
 
   public onAddSeminar(addForm: NgForm) {
-    console.log(addForm.value);
-    this.seminarService.addSeminar(addForm.value).subscribe(
+    let seminar: Seminar = addForm.value;
+    let seminarraum: Seminarraum = {raumnummer: addForm.value.seminarraum, name: "", maximalePersonenanzahl: 2, ausstattung: ""}
+    seminar.seminarraum = seminarraum;
+    this.seminarService.addSeminar(seminar).subscribe(
      {
-      next: (value: Seminar) => {this.getAllSeminars(); console.log(value); addForm.reset()
+      next: (value: Seminar) => {this.getAllSeminars(); addForm.reset()
       }, 
       error: (e: HttpErrorResponse) => {console.log(e.message);
       }
