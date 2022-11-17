@@ -1,6 +1,6 @@
 export interface Seminarraum {
-    name:string;
     raumnummer: number;
+    name:string;
     maximalePersonenanzahl: number;
     ausstattung: string;
 }
