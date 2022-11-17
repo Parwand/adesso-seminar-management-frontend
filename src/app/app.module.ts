@@ -15,7 +15,8 @@ import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuch
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent}, 
   {path: "about", component: AboutComponent},
-  {path: "seminarraum", component: SeminarraumComponent}
+  {path: "seminarraum", component: SeminarraumComponent},
+  {path: "buchung", component: SeminarbuchungComponent}
 ]
 
 
