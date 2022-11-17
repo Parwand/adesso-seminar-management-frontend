@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { Seminarraum } from 'src/app/interfaces/Seminarraum';
+import { PersonService } from 'src/app/services/person/person.service';
 import { SeminarService } from 'src/app/services/seminar/seminar.service';
 import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.service';
 
@@ -28,7 +29,8 @@ export class SeminarComponent implements OnInit {
   public seminarraums: Seminarraum[];
 
   constructor(private seminarService: SeminarService,
-              private seminarraumService: SeminarraumService) { }
+              private seminarraumService: SeminarraumService,
+              private personService: PersonService) { }
 
   ngOnInit(): void {
     this.getAllSeminars();
@@ -77,6 +79,15 @@ export class SeminarComponent implements OnInit {
     this.seminarService.deleteSeminar(seminarnummer).subscribe(
       {
         next:(value: void) => {console.log(value); this.getAllSeminars();},
+        error: (e: HttpErrorResponse) => console.log(e.message)
+      }
+    );
+  }
+
+  public onSeminarBuchen(seminarnummer: number, personId: number): void {
+    this.personService.seminarBuchen(seminarnummer, personId).subscribe(
+      {
+        next:(value: string) => {console.log(value); this.getAllSeminars();},
         error: (e: HttpErrorResponse) => console.log(e.message)
       }
     );
