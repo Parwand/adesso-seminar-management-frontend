@@ -38,7 +38,8 @@ export class SeminarComponent implements OnInit {
   private getAllSeminars() {
     this.seminarService.getAllSeminars().subscribe(
       {
-        next:(value: Seminar[]) => this.seminars = value,
+        next:(value: Seminar[]) => {this.seminars = value; console.log(this.seminars);
+        },
         error: (e: HttpErrorResponse) => console.log(e.message)
       }
     );
