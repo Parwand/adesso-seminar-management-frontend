@@ -108,14 +108,14 @@
                     <label for="add-seminarraum">Raumnummer</label><br>
                     <select ngModel name="seminarraum" id="seminarraum" required="">
                         <option *ngFor="let seminarraum of seminarraums"
-                        value="{seminarnummer: {{seminarraum.raumnummer}}, name: '{{seminarraum.name}}', maximalePersonenanzahl: {{seminarraum.maximalePersonenanzahl}}, ausstattung: '{{seminarraum.ausstattung}}'}">
+                        value={{seminarraum.raumnummer}}>
                             {{seminarraum.raumnummer}}
                         </option>
                     </select>
                 </div>
                 <!-- modal-footer -->
                 <div class="modal-footer">
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Hinzufügen</button>
+                    <button  type="submit" class="btn btn-primary">Hinzufügen</button>
                 </div>
             </form>
         </div>
