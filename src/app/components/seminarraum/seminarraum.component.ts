@@ -45,4 +45,20 @@ export class SeminarraumComponent implements OnInit {
   public onToggleModal(seminarraum: Seminarraum): void{
     this.onToggleSeminarraum = seminarraum;
   }
+
+  public onSearchSeminarraum(key: string): void{
+    const result: Seminarraum[] = [];
+    for(let seminarraum of this.seminarraums) {
+      if(seminarraum.name.toLowerCase().indexOf(key.toLowerCase()) != -1 || 
+        seminarraum.ausstattung.indexOf(key.toLowerCase()) != -1)
+        {
+          result.push(seminarraum);
+        }
+    }
+
+    this.seminarraums = result;
+    if(result.length === 0 || !key) {
+      this.getAllSeminarraums();
+    }
+  }
 }
