@@ -27,7 +27,7 @@
             <td>{{seminar.seminarleiter}}</td>
             <td>{{seminar.voraussetzung}}</td>
             <td>{{seminar?.seminarraum?.raumnummer}}</td>
-            <td><button (click)="onSeminarBuchen(seminar.seminarnummer, 8)" type="button" class="btn btn-sm btn-outline-secondary">Buchen</button></td>
+            <td><button (click)="onSeminarBuchen(seminar.seminarnummer, 1)" type="button" class="btn btn-sm btn-outline-secondary">Buchen</button></td>
             <td><button (click)="onToggleModal(seminar)" type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#editeSeminarModal">Bearbeiten</button></td>
             <td><button (click)="onToggleModal(seminar)" type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Löschen</button></td>
         </tr>
