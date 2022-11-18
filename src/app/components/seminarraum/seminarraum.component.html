@@ -19,6 +19,12 @@
 </form>
 
 <br>
+<form>
+    <div class="col-sm-3">
+        <label class="text-nowrap text">suchen</label>
+        <input type="search" (ngModelChange)="onSearchSeminarraum(key.value)"  #key="ngModel" ngModel name="key" placeholder="suchen by seminarname" class="form-control">
+    </div>
+</form>
 <table class="table table-bordered table-striped" id="seminarraumTable">
     <thead>
         <tr>
