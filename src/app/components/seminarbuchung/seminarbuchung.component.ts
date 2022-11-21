@@ -18,10 +18,11 @@ export class SeminarbuchungComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBuchungen();
+    this.setPerson();
   }
 
   public getBuchungen(): void {
-    this.personService.getBuchungenByPersonId(this.getPerson().id).subscribe({ 
+    this.personService.getBuchungenByPersonId(this.person.id).subscribe({ 
       next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
@@ -30,7 +31,7 @@ export class SeminarbuchungComponent implements OnInit {
   }
   
   public onSeminarbuchungStornieren(buchungsnummer: string): void {
-    this.personService.seminarbuchungStornieren(buchungsnummer, this.getPerson().id).subscribe({
+    this.personService.seminarbuchungStornieren(buchungsnummer, this.person.id).subscribe({
       next: (value: void) => {this.getBuchungen(); console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
@@ -38,11 +39,11 @@ export class SeminarbuchungComponent implements OnInit {
     });  
   }
 
-  public getPerson(): Person {
+  public setPerson(): void {
     this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
-      next: (value) =>{ this.person = value;}
+      next: (value) =>{ this.person = value; console.log("==================>", this.person);
+      }
     });
-    return this.person;
   }
 
 
