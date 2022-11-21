@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SeminarComponent } from './components/seminar/seminar.component';
 import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuchung.component';
 import { AnimationMetadataType } from '@angular/animations';
-import { KeycloakService } from 'keycloak-angular';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent}, 
@@ -64,7 +64,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
         timeOut:1500
       }
     ),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    KeycloakAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]
