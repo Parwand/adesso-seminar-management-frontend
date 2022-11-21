@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import { KeycloakTokenParsed } from 'keycloak-js';
 import { Observable } from 'rxjs';
 import { Person } from '../interfaces/Person';
 import { PersonService } from '../services/person/person.service';
@@ -43,7 +44,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   private saveLoggedUser(): void {
-    const userDetails = this.keycloak.getKeycloakInstance().tokenParsed;
+    const userDetails = this.getLoggedUser();
     
     this.person = {
       username: userDetails?.['preferred_username'],
@@ -63,5 +64,16 @@ export class AuthGuard extends KeycloakAuthGuard {
       error: (error: HttpErrorResponse) => {console.log(error.message);
       }
     });
+  }
+
+  public getLoggedUser(): KeycloakTokenParsed | undefined{
+    try {
+      const userDetails = this.keycloak.getKeycloakInstance().tokenParsed;
+      return userDetails;
+    }
+    catch (e) {
+      console.error("Exception: ", e);
+      return undefined;
+    }
   }
 }
