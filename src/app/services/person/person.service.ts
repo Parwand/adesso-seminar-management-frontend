@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Seminarbuchung } from 'src/app/interfaces/Seminarbuchung';
 import { Seminar } from 'src/app/interfaces/Seminar';
+import { Person } from 'src/app/interfaces/Person';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class PersonService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public savePerson(person: Person): Observable<Person> {
+    return this.httpClient.post<Person>(`${this.apiUrl}/person/add/`, person);
+  }
+  
   public getBuchungenByPersonId(personId: number):  Observable<Seminarbuchung[]>{
     return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
   }
