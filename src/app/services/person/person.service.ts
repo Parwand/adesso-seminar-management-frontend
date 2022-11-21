@@ -11,6 +11,7 @@ import { Person } from 'src/app/interfaces/Person';
 })
 export class PersonService {
   apiUrl = environment.baseUrl;
+  result: any;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,11 +27,14 @@ export class PersonService {
     return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
   }
 
-  seminarbuchungStornieren(buchungsnummer: string, personId: number): Observable<void> {
-    const params: HttpParams = new HttpParams()
+  seminarbuchungStornieren(buchungsnummer: string, personId: number | undefined): Observable<void> {
+    if(personId !== undefined) {
+      const params: HttpParams = new HttpParams()
     .set("buchungsnummer", buchungsnummer)
     .set("personId", personId);
-    return this.httpClient.post<void>(`${this.apiUrl}/person/buchung/stornieren`, params);
+    this.result = this.httpClient.post<void>(`${this.apiUrl}/person/buchung/stornieren`, params);
+    }
+    return this.result;
   }
 
   public seminarBuchen(seminarnummer: number, personId: number): Observable<string> {

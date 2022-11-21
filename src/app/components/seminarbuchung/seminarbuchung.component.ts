@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { Person } from 'src/app/interfaces/Person';
 import { Seminarbuchung } from 'src/app/interfaces/Seminarbuchung';
 import { PersonService } from 'src/app/services/person/person.service';
 
@@ -10,14 +12,17 @@ import { PersonService } from 'src/app/services/person/person.service';
 })
 export class SeminarbuchungComponent implements OnInit {
   seminarbuchungen: Seminarbuchung[];
-  constructor(private personService: PersonService) { }
+  person: Person;
+  constructor(private personService: PersonService,
+              private authGuard: AuthGuard) { }
 
   ngOnInit(): void {
     this.getBuchungen();
   }
 
   public getBuchungen(): void {
-    this.personService.getBuchungenByPersonId(1).subscribe({ 
+    this.getBuchungen
+    this.personService.getBuchungenByPersonId(2).subscribe({ 
       next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
@@ -25,14 +30,17 @@ export class SeminarbuchungComponent implements OnInit {
     });
   }
   
-  public onSeminarbuchungStornieren(buchungsnummer: string, personId: number): void {    
-    this.personService.seminarbuchungStornieren(buchungsnummer, personId).subscribe({
+  public onSeminarbuchungStornieren(buchungsnummer: string): void {
+    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
+      next: (value) =>{ this.person = value;}
+    });
+
+    this.personService.seminarbuchungStornieren(buchungsnummer, this.person.id).subscribe({
       next: (value: void) => {this.getBuchungen(); console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
       }
-    }
-    );
+    });  
   }
 
 
