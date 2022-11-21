@@ -5,8 +5,8 @@ import { Seminarbuchung } from "./Seminarbuchung";
 export interface Person{
     id?: number;
     username: string;
-    firstname: string;
-    lastname: string;
+    vornmae: string;
+    nachname: string;
     geburtsdatum?: Date;
     adresse?: Adresse;
     seminarList?: Seminar[];
