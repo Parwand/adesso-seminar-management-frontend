@@ -112,5 +112,7 @@ export class SeminarComponent implements OnInit {
   private onSuccess(message: string): void {
     this.notificationService.success('SUCCESS', message)
   }
-
+  private onError(message: string): void {
+    this.notificationService.error('ERROR', message)
+  }
 }
