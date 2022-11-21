@@ -76,4 +76,9 @@ export class AuthGuard extends KeycloakAuthGuard {
       return undefined;
     }
   }
+
+  public getUsername(): string {
+    const userDetails = this.getLoggedUser();
+    return userDetails?.['preferred_username'];
+  }
 }
