@@ -21,7 +21,6 @@ export class SeminarbuchungComponent implements OnInit {
   }
 
   public getBuchungen(): void {
-    this.getBuchungen
     this.personService.getBuchungenByPersonId(2).subscribe({ 
       next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
       }, 
@@ -31,16 +30,19 @@ export class SeminarbuchungComponent implements OnInit {
   }
   
   public onSeminarbuchungStornieren(buchungsnummer: string): void {
-    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
-      next: (value) =>{ this.person = value;}
-    });
-
-    this.personService.seminarbuchungStornieren(buchungsnummer, this.person.id).subscribe({
+    this.personService.seminarbuchungStornieren(buchungsnummer, this.getPerson().id).subscribe({
       next: (value: void) => {this.getBuchungen(); console.log(value);
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
       }
     });  
+  }
+
+  public getPerson(): Person {
+    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
+      next: (value) =>{ this.person = value;}
+    });
+    return this.person;
   }
 
 
