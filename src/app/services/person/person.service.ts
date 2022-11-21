@@ -17,6 +17,12 @@ export class PersonService {
   public savePerson(person: Person): Observable<Person> {
     return this.httpClient.post<Person>(`${this.apiUrl}/person/add/`, person);
   }
+
+  public getPersonByUsername(username: String): Observable<Person> {
+    const params: HttpParams = new HttpParams()
+    .set("username", "all");
+    return this.httpClient.get<Person>(`${this.apiUrl}/person/getByUsername`);
+  }
   
   public getBuchungenByPersonId(personId: number):  Observable<Seminarbuchung[]>{
     return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
