@@ -44,7 +44,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   private saveLoggedUser(): void {
-    const userDetails = this.getLoggedUser();
+    const userDetails = this.getUserDetails();
     
     this.person = {
       username: userDetails?.['preferred_username'],
@@ -66,7 +66,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     });
   }
 
-  public getLoggedUser(): KeycloakTokenParsed | undefined{
+  public getUserDetails(): KeycloakTokenParsed | undefined{
     try {
       const userDetails = this.keycloak.getKeycloakInstance().tokenParsed;
       return userDetails;
@@ -78,7 +78,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   public getUsername(): string {
-    const userDetails = this.getLoggedUser();
+    const userDetails = this.getUserDetails();
     return userDetails?.['preferred_username'];
   }
 }
