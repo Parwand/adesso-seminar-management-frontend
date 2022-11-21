@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NotificationsService } from 'angular2-notifications';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { Seminarraum } from 'src/app/interfaces/Seminarraum';
 import { PersonService } from 'src/app/services/person/person.service';
@@ -30,7 +31,8 @@ export class SeminarComponent implements OnInit {
 
   constructor(private seminarService: SeminarService,
               private seminarraumService: SeminarraumService,
-              private personService: PersonService) { }
+              private personService: PersonService,
+              private notificationService: NotificationsService) { }
 
   ngOnInit(): void {
     this.getAllSeminars();
@@ -106,4 +108,9 @@ export class SeminarComponent implements OnInit {
       }
     );
   }
+
+  private onSuccess(message: string): void {
+    this.notificationService.success('SUCCESS', message)
+  }
+
 }
