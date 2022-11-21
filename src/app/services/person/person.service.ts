@@ -19,9 +19,7 @@ export class PersonService {
   }
 
   public getPersonByUsername(username: String): Observable<Person> {
-    const params: HttpParams = new HttpParams()
-    .set("username", "all");
-    return this.httpClient.get<Person>(`${this.apiUrl}/person/getByUsername`);
+    return this.httpClient.get<Person>(`${this.apiUrl}/person/getByUsername/${username}`);
   }
   
   public getBuchungenByPersonId(personId: number):  Observable<Seminarbuchung[]>{
