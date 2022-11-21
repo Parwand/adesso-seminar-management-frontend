@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SeminarComponent } from './components/seminar/seminar.component';
 import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuchung.component';
 import { AnimationMetadataType } from '@angular/animations';
+import { KeycloakService } from 'keycloak-angular';
 
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent}, 
@@ -21,6 +22,22 @@ export const appRoutes: Routes = [
   {path: "seminarraum", component: SeminarraumComponent},
   {path: "buchung", component: SeminarbuchungComponent}
 ]
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8082/auth',
+        realm: 'seminar-management',
+        clientId: 'adesso-seminar-management'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
+}
 
 
 @NgModule({
