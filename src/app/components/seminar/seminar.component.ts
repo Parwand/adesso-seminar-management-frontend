@@ -89,7 +89,11 @@ export class SeminarComponent implements OnInit {
   public onSeminarBuchen(seminarnummer: number, personId: number): void {
     this.personService.seminarBuchen(seminarnummer, personId).subscribe(
       {
-        next:(value: string) => {console.log(value); this.getAllSeminars();},
+        next:(value: string) =>
+        {console.log(value); this.getAllSeminars();
+          if(value) {this.onSuccess('Seminar wurde gebucht')}
+          if(!value) {this.onError('Seminar ist schon gebucht || Keine Plätze')} 
+        },
         error: (e: HttpErrorResponse) => console.log(e.message)
       }
     );
