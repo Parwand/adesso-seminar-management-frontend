@@ -22,12 +22,18 @@ export class SeminarbuchungComponent implements OnInit {
   }
 
   public getBuchungen(): void {
-    this.personService.getBuchungenByPersonId(this.person.id).subscribe({ 
-      next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
-      }, 
-      error: (e: HttpErrorResponse) =>{console.log(e.message);
+    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
+      next: (value) =>{
+        this.person = value;
+        this.personService.getBuchungenByPersonId(this.person.id).subscribe({ 
+          next: (value: Seminarbuchung[]) => {this.seminarbuchungen = value; console.log(value);
+          }, 
+          error: (e: HttpErrorResponse) =>{console.log(e.message);
+          }
+        });
       }
     });
+    
   }
   
   public onSeminarbuchungStornieren(buchungsnummer: string): void {
@@ -41,7 +47,7 @@ export class SeminarbuchungComponent implements OnInit {
 
   public setPerson(): void {
     this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
-      next: (value) =>{ this.person = value; console.log("==================>", this.person);
+      next: (value) =>{ this.person = value;
       }
     });
   }
