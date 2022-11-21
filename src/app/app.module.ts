@@ -15,12 +15,13 @@ import { SeminarComponent } from './components/seminar/seminar.component';
 import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuchung.component';
 import { AnimationMetadataType } from '@angular/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { AuthGuard } from './guards/auth.guard';
 
 export const appRoutes: Routes = [
-  {path:"", component: SeminarComponent}, 
+  {path:"", component: SeminarComponent, canActivate: [AuthGuard]}, 
   {path: "about", component: AboutComponent},
   {path: "seminarraum", component: SeminarraumComponent},
-  {path: "buchung", component: SeminarbuchungComponent}
+  {path: "buchung", component: SeminarbuchungComponent, canActivate: [AuthGuard]}
 ]
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -29,13 +30,14 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8082/auth',
         realm: 'seminar-management',
-        clientId: 'adesso-seminar-management'
+        clientId: 'seminar-management-dev'
       },
       initOptions: {
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
           window.location.origin + '/assets/silent-check-sso.html'
-      }
+      },
+      loadUserProfileAtStartUp: true
     });
 }
 
