@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NotificationsService } from 'angular2-notifications';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Seminar } from 'src/app/interfaces/Seminar';
 import { Seminarraum } from 'src/app/interfaces/Seminarraum';
 import { PersonService } from 'src/app/services/person/person.service';
@@ -32,7 +33,8 @@ export class SeminarComponent implements OnInit {
   constructor(private seminarService: SeminarService,
               private seminarraumService: SeminarraumService,
               private personService: PersonService,
-              private notificationService: NotificationsService) { }
+              private notificationService: NotificationsService,
+              private authGuard: AuthGuard) { }
 
   ngOnInit(): void {
     this.getAllSeminars();
@@ -86,17 +88,27 @@ export class SeminarComponent implements OnInit {
     );
   }
 
-  public onSeminarBuchen(seminarnummer: number, personId: number): void {
-    this.personService.seminarBuchen(seminarnummer, personId).subscribe(
-      {
-        next:(value: string) =>
-        {console.log(value); this.getAllSeminars();
-          if(value) {this.onSuccess('Seminar wurde gebucht')}
-          if(!value) {this.onError('Seminar ist schon gebucht || Keine Plätze')} 
-        },
-        error: (e: HttpErrorResponse) => console.log(e.message)
-      }
-    );
+  public onSeminarBuchen(seminarnummer: number): void {
+    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
+      next: (value) =>{
+        let person = value;
+        if(person.id !== undefined) {
+          this.personService.seminarBuchen(seminarnummer, person.id).subscribe(
+            {
+              next:(value: string) =>
+              {console.log(value); this.getAllSeminars();
+                if(value) {this.onSuccess('Seminar wurde gebucht')}
+                if(!value) {this.onError('Seminar ist schon gebucht || Keine Plätze')} 
+              },
+              error: (e: HttpErrorResponse) => console.log(e.message)
+            }
+          );
+        }
+      },
+      error: (e: HttpErrorResponse) => {console.log(e.message);}
+    });
+
+    
   }
 
   public onToggleModal(seminar: Seminar) : void {
