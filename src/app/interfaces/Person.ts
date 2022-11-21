@@ -3,12 +3,12 @@ import { Seminar } from "./Seminar";
 import { Seminarbuchung } from "./Seminarbuchung";
 
 export interface Person{
-    id: number;
+    id?: number;
     username: string;
     firstname: string;
     lastname: string;
-    geburtsdatum: Date;
-    adresse: Adresse;
-    seminarList: Seminar[];
-    seminarbuchungen: Seminarbuchung[];
+    geburtsdatum?: Date;
+    adresse?: Adresse;
+    seminarList?: Seminar[];
+    seminarbuchungen?: Seminarbuchung[];
 }
