@@ -11,6 +11,7 @@ import { Person } from 'src/app/interfaces/Person';
 })
 export class PersonService {
   apiUrl = environment.baseUrl;
+  seminarbuchungen: Observable<Seminarbuchung[]>;
   result: any;
 
   constructor(private httpClient: HttpClient) { }
@@ -23,8 +24,11 @@ export class PersonService {
     return this.httpClient.get<Person>(`${this.apiUrl}/person/getByUsername/${username}`);
   }
   
-  public getBuchungenByPersonId(personId: number):  Observable<Seminarbuchung[]>{
-    return this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
+  public getBuchungenByPersonId(personId: number | undefined):  Observable<Seminarbuchung[]>{
+    if(personId !== undefined) {
+      this.seminarbuchungen = this.httpClient.get<Seminarbuchung[]>(`${this.apiUrl}/person/buchungen/${personId}`);
+    }
+    return this.seminarbuchungen;
   }
 
   seminarbuchungStornieren(buchungsnummer: string, personId: number | undefined): Observable<void> {
