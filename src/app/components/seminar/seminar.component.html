@@ -179,7 +179,7 @@
                     <select ngModel name="seminarraum" id="seminarraum" class="form-control" required="">
                         <option *ngFor="let seminarraum of seminarraums"
                         value={{seminarraum.raumnummer}}>
-                            {{seminarraum.raumnummer}}
+                            {{seminarraum.name}}
                         </option>
                     </select>
                 </div>
@@ -194,4 +194,5 @@
         </div>
     </div>
 </div>
+<simple-notifications></simple-notifications>
     
