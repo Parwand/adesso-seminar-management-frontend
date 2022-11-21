@@ -5,7 +5,7 @@ import { Seminarbuchung } from "./Seminarbuchung";
 export interface Person{
     id?: number;
     username: string;
-    vornmae: string;
+    vorname: string;
     nachname: string;
     geburtsdatum?: Date;
     adresse?: Adresse;
