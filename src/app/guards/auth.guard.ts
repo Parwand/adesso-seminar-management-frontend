@@ -24,7 +24,6 @@ export class AuthGuard extends KeycloakAuthGuard {
     state: RouterStateSnapshot
   ) {
     this.saveLoggedUser();
-    this.getLoggedPerson();
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
       await this.keycloak.login({
@@ -81,15 +80,6 @@ export class AuthGuard extends KeycloakAuthGuard {
   public getUsername(): string {
     const userDetails = this.getUserDetails();
     return userDetails?.['preferred_username'];
-  }
-
-  public getLoggedPerson(): Person {
-    this.personService.getPersonByUsername(this.getUsername()).subscribe({
-      next: (value: Person) => {this.person = value;},
-      error: (e: HttpErrorResponse) => {console.log(e.message);
-      }
-    });
-    return this.person;
   }
 
   public isLogged(): Promise<boolean> {
