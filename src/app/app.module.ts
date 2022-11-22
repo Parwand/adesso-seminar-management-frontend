@@ -22,7 +22,8 @@ export const appRoutes: Routes = [
   {path:"", component: SeminarComponent, canActivate: [AuthGuard]}, 
   {path: "about", component: AboutComponent},
   {path: "seminarraum", component: SeminarraumComponent},
-  {path: "buchung", component: SeminarbuchungComponent, canActivate: [AuthGuard]}
+  {path: "buchung", component: SeminarbuchungComponent, canActivate: [AuthGuard]},
+  {path: "user", component: PersonComponent, canActivate: [AuthGuard]}
 ]
 
 function initializeKeycloak(keycloak: KeycloakService) {
