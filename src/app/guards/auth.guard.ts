@@ -91,4 +91,8 @@ export class AuthGuard extends KeycloakAuthGuard {
     });
     return this.person;
   }
+
+  public isLogged(): Promise<boolean> {
+    return this.keycloak.isLoggedIn();
+  }
 }
