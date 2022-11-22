@@ -95,4 +95,14 @@ export class AuthGuard extends KeycloakAuthGuard {
   public isLogged(): Promise<boolean> {
     return this.keycloak.isLoggedIn();
   }
+
+  public getLoggedUser(): Person {
+    const userDetails = this.getUserDetails();
+    this.person = {
+      username: userDetails?.['preferred_username'],
+      vorname: userDetails?.['given_name'],
+      nachname: userDetails?.['family_name']
+    }
+    return this.person;
+  }
 }
