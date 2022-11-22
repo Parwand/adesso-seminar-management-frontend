@@ -21,7 +21,7 @@ import { PersonComponent } from './components/person/person.component';
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent, canActivate: [AuthGuard]}, 
   {path: "about", component: AboutComponent},
-  {path: "seminarraum", component: SeminarraumComponent},
+  {path: "seminarraum", component: SeminarraumComponent, canActivate: [AuthGuard]},
   {path: "buchung", component: SeminarbuchungComponent, canActivate: [AuthGuard]},
   {path: "user", component: PersonComponent, canActivate: [AuthGuard]}
 ]
