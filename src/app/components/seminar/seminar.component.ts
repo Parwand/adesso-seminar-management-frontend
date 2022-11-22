@@ -89,19 +89,24 @@ export class SeminarComponent implements OnInit {
   }
 
   public onSeminarBuchen(seminarnummer: number): void {
-    let person = this.authGuard.getLoggedPerson();
-    if(person.id !== undefined) {
-      this.personService.seminarBuchen(seminarnummer, person.id).subscribe(
-        {
-          next:(value: string) =>
-          { this.getAllSeminars();
-            if(value) {this.onSuccess('Seminar wurde gebucht')}
-            if(!value) {this.onError('Seminar ist schon gebucht || Keine Plätze')} 
-          },
-          error: (e: HttpErrorResponse) => console.log(e.message)
+    this.personService.getPersonByUsername(this.authGuard.getUsername()).subscribe({
+      next: (value) =>{
+        let person = value;
+        if(person.id !== undefined) {
+          this.personService.seminarBuchen(seminarnummer, person.id).subscribe(
+            {
+              next:(value: string) =>
+              {console.log(value); this.getAllSeminars();
+                if(value) {this.onSuccess('Seminar wurde gebucht')}
+                if(!value) {this.onError('Seminar ist schon gebucht || Keine Plätze')} 
+              },
+              error: (e: HttpErrorResponse) => console.log(e.message)
+            }
+          );
         }
-      );
-    }
+      },
+      error: (e: HttpErrorResponse) => {console.log(e.message);}
+    });
   }
 
   public onToggleModal(seminar: Seminar) : void {
