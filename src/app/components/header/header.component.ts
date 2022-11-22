@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private keycloakService: KeycloakService) { }
 
   ngOnInit(): void {
   }
 
+  public logout(): void {
+    this.keycloakService.logout("http://localhost:4200");
+  }
 }
