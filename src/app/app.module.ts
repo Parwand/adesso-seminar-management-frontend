@@ -19,7 +19,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { PersonComponent } from './components/person/person.component';
 
 export const appRoutes: Routes = [
-  {path:"", component: SeminarComponent, canActivate: [AuthGuard]}, 
+  {path:"seminar", component: SeminarComponent, canActivate: [AuthGuard]}, 
   {path: "about", component: AboutComponent},
   {path: "seminarraum", component: SeminarraumComponent, canActivate: [AuthGuard]},
   {path: "buchung", component: SeminarbuchungComponent, canActivate: [AuthGuard]},
