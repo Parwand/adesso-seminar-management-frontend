@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public setUser(): void {
-    this.person = this.authGuard.getLoggedPerson();
+    this.person = this.authGuard.getLoggedUser();
   }
 
 }
