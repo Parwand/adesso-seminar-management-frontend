@@ -90,8 +90,6 @@ export class SeminarComponent implements OnInit {
 
   public onSeminarBuchen(seminarnummer: number): void {
     let person = this.authGuard.getLoggedPerson();
-    console.log("person::::::::::::::::::::: ", person);
-    
     if(person.id !== undefined) {
       this.personService.seminarBuchen(seminarnummer, person.id).subscribe(
         {
