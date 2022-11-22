@@ -16,6 +16,7 @@ import { SeminarbuchungComponent } from './components/seminarbuchung/seminarbuch
 import { AnimationMetadataType } from '@angular/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AuthGuard } from './guards/auth.guard';
+import { PersonComponent } from './components/person/person.component';
 
 export const appRoutes: Routes = [
   {path:"", component: SeminarComponent, canActivate: [AuthGuard]}, 
@@ -50,7 +51,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     FooterComponent,
     AboutComponent,
     SeminarComponent,
-    SeminarbuchungComponent
+    SeminarbuchungComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule, 
