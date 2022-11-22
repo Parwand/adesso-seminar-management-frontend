@@ -26,4 +26,7 @@ export class HeaderComponent implements OnInit {
     this.person = this.authGuard.getLoggedUser();
   }
 
+  public onLogin(): void {
+    this.keycloakService.login();
+  }
 }
