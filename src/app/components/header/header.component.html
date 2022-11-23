@@ -8,4 +8,9 @@
     <li><a (click)="logout()" href="#">Abmelden</a></li>
     <a href="https://www.adesso.de" target="_blank"><img src="assets/img/adesso-log.svg.png" width="150" height="50"></a>
 </ul>
-<button class="btn btn-outline-secondary mt-2" (click)="onLogin()">Loging</button>
+<div *ngIf="hasRouter('/')">
+    <h3 class="bg-secondary">Seminar Management</h3><br><br>
+    <strong>Loging with SSO Keycloak</strong><br>
+    <button class="btn btn-outline-primary mt-2" (click)="onLogin()">keycloak SSO</button>
+</div>
+
