@@ -1,12 +1,17 @@
 <button (click)="redirectToProfile()" class="btn btn-sm btn-outline-info">Account Management</button>
 <div class="container">
     <div>
-        <label for="vorname">Vorname: <span></span></label>
+        <label for="vorname">Vorname: <span>{{person.vorname}}</span></label>
     </div>
     <div>
-        <label for="vorname">Nachname: <span></span></label>
+        <label for="vorname">Nachname: <span>{{person.nachname}}</span></label>
     </div>
     <div>
-        <label for="vorname">Adresse: <span></span></label>
+        <label for="vorname">Adresse:
+            <span class="container">
+                {{person.adresse?.strasse}} {{person.adresse?.strassennummer}}
+                {{person.adresse?.plz}} {{person.adresse?.stadt}}
+            </span>
+        </label>
     </div>
 </div>
