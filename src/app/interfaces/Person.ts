@@ -4,9 +4,9 @@ import { Seminarbuchung } from "./Seminarbuchung";
 
 export interface Person{
     id?: number;
-    username: string;
-    vorname: string;
-    nachname: string;
+    username?: string;
+    vorname?: string;
+    nachname?: string;
     geburtsdatum?: Date;
     adresse?: Adresse;
     seminarList?: Seminar[];
