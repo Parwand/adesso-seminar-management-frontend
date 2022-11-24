@@ -20,7 +20,7 @@ export class PersonService {
     return this.httpClient.post<Person>(`${this.apiUrl}/person/add/`, person);
   }
 
-  public getPersonByUsername(username: String): Observable<Person> {
+  public getPersonByUsername(username: String | undefined): Observable<Person> {
     return this.httpClient.get<Person>(`${this.apiUrl}/person/getByUsername/${username}`);
   }
   
