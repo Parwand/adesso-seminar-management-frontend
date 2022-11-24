@@ -14,4 +14,41 @@
             </span>
         </label>
     </div>
+    <button class="btn btn-debug btn-outline-secondary btn-sm" data-toggle="modal" data-target= "#editModal">Die Adresse anpassen</button>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ihre Adresse bearbeiten</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form #edite = "ngForm" (ngSubmit)="editAddress(edite)">
+                <div>
+                    <label for="strasse">Straße</label>
+                    <input type="text" ngModel= {{person.adresse?.strasse}} name="strasse" class="form-control" id="strasse">
+                </div>
+                <div>
+                    <label for="strassennummer">Straßennummer</label>
+                    <input type="text" ngModel = {{person.adresse?.strassennummer}} name="strassennummer" class="form-control" id="strassennummer">
+                </div>
+                <div>
+                    <label for="plz">PLZ</label>
+                    <input type="text" ngModel = {{person.adresse?.plz}} name="plz" class="form-control" id="plz">
+                </div>
+                <div>
+                    <label for="strassennummer">Stadt</label>
+                    <input type="text" ngModel = {{person.adresse?.stadt}} name="stadt" class="form-control" id="stadt">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                </div>
+            </form>
+    </div>
 </div>
