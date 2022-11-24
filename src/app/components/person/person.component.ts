@@ -25,7 +25,7 @@ export class PersonComponent implements OnInit {
 
   public getPerson(): void {
     this.personService.getPersonByUsername(this.keycloakService.getUsername()).subscribe({
-      next: (value) => {this.person = value; console.log("=======:: ", value);
+      next: (value) => {this.person = value;
       },
       error: (error) => {console.log(error.message);
       },
