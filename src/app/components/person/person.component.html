@@ -32,20 +32,20 @@
         </div>
         <div class="modal-body">
             <form #edite = "ngForm" (ngSubmit)="editAddress(edite)">
-                <input type="hidden" ngModel= {{person.id}} name="id" id="id">
-                <input type="hidden" ngModel= {{person.username}} name="username" id="username">
+                <input type="hidden" ngModel= {{person.id}} name="id" id="id" required="">
+                <input type="hidden" ngModel= {{person.username}} name="username" id="username" required="">
                 <div>
                     <label for="strasse">Vorname</label>
-                    <input type="text" ngModel= {{person.vorname}} name="vorname" class="form-control" id="vorname">
+                    <input type="text" ngModel= {{person.vorname}} name="vorname" class="form-control" id="vorname" required="">
                 </div>
                 <div>
                     <label for="strasse">Nachname</label>
-                    <input type="text" ngModel= {{person.nachname}} name="nachname" class="form-control" id="nachname">
+                    <input type="text" ngModel= {{person.nachname}} name="nachname" class="form-control" id="nachname" required="">
 
                 </div>
                 <div>
                     <label for="strasse">Geburtsdatum</label>
-                    <input type="date" ngModel= {{person.Geburtsdatum} name="geburtsdatum" class="form-control" id="geburtsdatum">
+                    <input type="date" ngModel= {{person.geburtsdatum}} name="geburtsdatum" class="form-control" id="geburtsdatum" required="">
                 </div>
                 <div>
                     <label for="strasse">Straße</label>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button [disabled] = "edite.invalid"  type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
     </div>
