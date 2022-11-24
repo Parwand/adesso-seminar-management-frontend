@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { Person } from 'src/app/interfaces/Person';
@@ -30,6 +32,16 @@ export class PersonComponent implements OnInit {
       error: (error) => {console.log(error.message);
       },
     }); 
+  }
+
+  public editAddress(editeForm: NgForm): void {
+    this.person = editeForm.value;
+    console.log("Person:::::::::::: " , this.person);
+    
+    this.personService.savePerson(this.person).subscribe({
+      next: (value: Person) => {editeForm.reset();},
+      error: (error: HttpErrorResponse) => {console.log(error.message)}
+    });
   }
 
 }
