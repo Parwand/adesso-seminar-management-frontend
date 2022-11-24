@@ -1,10 +1,13 @@
 <button (click)="redirectToProfile()" class="btn btn-sm btn-outline-info">Account Management</button>
 <div class="container">
     <div>
-        <label for="vorname">Vorname: <span>{{person.vorname}}</span></label>
+        <label for="vorname">Vorname: <strong>{{person.vorname}}</strong></label>
     </div>
     <div>
-        <label for="vorname">Nachname: <span>{{person.nachname}}</span></label>
+        <label for="vorname">Nachname: <strong>{{person.nachname}}</strong></label>
+    </div>
+    <div>
+        <label for="vorname">Geburtsdatum: <strong>{{person.geburtsdatum}}</strong></label>
     </div>
     <div>
         <label for="vorname">Adresse:
@@ -14,7 +17,7 @@
             </span>
         </label>
     </div>
-    <button class="btn btn-debug btn-outline-secondary btn-sm" data-toggle="modal" data-target= "#editModal">Die Adresse anpassen</button>
+    <button class="btn btn-debug btn-outline-secondary btn-sm" data-toggle="modal" data-target= "#editModal">barbeiten</button>
 </div>
 
 <!-- Edit Modal -->
@@ -22,20 +25,35 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ihre Adresse bearbeiten</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ihre Angabne bearbeiten</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
             <form #edite = "ngForm" (ngSubmit)="editAddress(edite)">
+                <input type="hidden" ngModel= {{person.id}} name="id" id="id">
+                <input type="hidden" ngModel= {{person.username}} name="username" id="username">
+                <div>
+                    <label for="strasse">Vorname</label>
+                    <input type="text" ngModel= {{person.vorname}} name="vorname" class="form-control" id="vorname">
+                </div>
+                <div>
+                    <label for="strasse">Nachname</label>
+                    <input type="text" ngModel= {{person.nachname}} name="nachname" class="form-control" id="nachname">
+
+                </div>
+                <div>
+                    <label for="strasse">Geburtsdatum</label>
+                    <input type="date" ngModel= {{person.Geburtsdatum} name="geburtsdatum" class="form-control" id="geburtsdatum">
+                </div>
                 <div>
                     <label for="strasse">Straße</label>
                     <input type="text" ngModel= {{person.adresse?.strasse}} name="strasse" class="form-control" id="strasse">
                 </div>
                 <div>
                     <label for="strassennummer">Straßennummer</label>
-                    <input type="text" ngModel = {{person.adresse?.strassennummer}} name="strassennummer" class="form-control" id="strassennummer">
+                    <input type="number" ngModel = {{person.adresse?.strassennummer}} name="strassennummer" class="form-control" id="strassennummer">
                 </div>
                 <div>
                     <label for="plz">PLZ</label>
@@ -47,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
     </div>
