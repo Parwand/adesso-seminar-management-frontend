@@ -47,6 +47,7 @@
                     <label for="strasse">Geburtsdatum</label>
                     <input type="date" ngModel= {{person.geburtsdatum}} name="geburtsdatum" class="form-control" id="geburtsdatum" required="">
                 </div>
+                <input type="hidden" ngModel= {{person.adresse?.id}} name="strasse_id" class="form-control" id="strasse">
                 <div>
                     <label for="strasse">Straße</label>
                     <input type="text" ngModel= {{person.adresse?.strasse}} name="strasse" class="form-control" id="strasse">
