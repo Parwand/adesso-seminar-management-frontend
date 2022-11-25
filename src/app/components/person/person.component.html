@@ -31,7 +31,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form #edite = "ngForm" (ngSubmit)="editAddress(edite)">
+            <form #edite = "ngForm">
                 <input type="hidden" ngModel= {{person.id}} name="id" id="id" required="">
                 <input type="hidden" ngModel= {{person.username}} name="username" id="username" required="">
                 <div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button [disabled] = "edite.invalid"  type="submit" class="btn btn-primary">Submit</button>
+                    <button [disabled] = "edite.invalid" (click)="editAddress(edite)" type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
                 </div>
             </form>
     </div>
