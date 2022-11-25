@@ -47,7 +47,7 @@ export class PersonComponent implements OnInit {
     this.person.adresse = this.adresse;
     
     this.personService.savePerson(this.person).subscribe({
-      next: (value: Person) => {editeForm.reset(); console.log(value);
+      next: (value: Person) => {this.getPerson();
       },
       error: (error: HttpErrorResponse) => {console.log(error.message)}
     });
