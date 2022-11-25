@@ -39,6 +39,7 @@ export class PersonComponent implements OnInit {
   public editAddress(editeForm: NgForm): void {
     this.person = editeForm.value;
     this.adresse = {
+      id: editeForm.value.adresse_id,
       stadt: editeForm.value.stadt,
       strasse: editeForm.value.strasse,
       strassennummer: editeForm.value.strassennummer,
