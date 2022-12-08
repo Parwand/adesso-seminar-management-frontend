@@ -1,4 +1,17 @@
 <button class="btn btn-sm btn-secondary m-1" data-toggle="modal" data-target="#addSeminarModal">Ein neues Seminar hinzufügen</button>
+<div class="row">
+        <div class="col-2 form-group">
+            <label for="search">suchen</label>
+            <input type="search"
+             id="search"
+             name="search"
+             class="form-control"
+             style="margin-bottom: 2px;"
+             placeholder="SeminarTitle"
+             (input)="onSearchSeminarraum(serachSeminarInput.value)" ngModel #serachSeminarInput="ngModel">
+        </div>
+ 
+</div>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>

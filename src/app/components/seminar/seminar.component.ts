@@ -129,4 +129,20 @@ export class SeminarComponent implements OnInit {
   private onError(message: string): void {
     this.notificationService.error('ERROR', message)
   }
+
+  onSearchSeminarraum(input: string): void {
+    const seminarResult: Seminar [] = [];
+    for(let seminar of this.seminars) {
+      if(seminar.seminarTitle?.toLowerCase().indexOf(input.toLowerCase()) !== -1 || 
+        seminar.seminarTitle?.toUpperCase().indexOf(input.toUpperCase()) !== -1) {
+        seminarResult.push(seminar);
+      }
+    }
+    this.seminars = seminarResult;
+    if(!input || input.length === 0) {
+      this.getAllSeminars();
+    }
+   
+    
+  }
 }
