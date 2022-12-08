@@ -20,8 +20,8 @@
         <tr *ngFor="let seminar of seminars">
             <td>{{seminar.seminarnummer}}</td>
             <td>{{seminar.seminarTitle}}</td>
-            <td>{{seminar.beginn}}</td>
-            <td>{{seminar.ende}}</td>
+            <td>{{seminar.beginn | date:'medium'}}</td>
+            <td>{{seminar.ende | date:'medium'}}</td>
             <td>{{seminar.kursinhalt}}</td>
             <td>{{seminar.teilnehmeranzahl}}</td>
             <td>{{seminar.seminarleiter}}</td>
