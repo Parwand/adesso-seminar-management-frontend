@@ -7,10 +7,22 @@
     <li><a [routerLink]="'/user'">{{person.vorname}}&nbsp;{{person.nachname}}</a></li>
     <li><a (click)="logout()" href="#">Abmelden</a></li>
     <a href="https://www.adesso.de" target="_blank"><img src="assets/img/adesso-log.svg.png" width="150" height="50"></a>
+    
+    <button 
+    class="btn btn-outline-secondary" 
+    data-toggle="dropdown" 
+    id="menu-dropdown"
+    aria-haspopup="true"
+    aria-expanded="false">menu</button>
+    <div class="dropdown-menu" aria-labelledby="menu-dropdown">
+        <a class="dropdown-item" [routerLink]="['user']" role="button">Profile</a>
+        <a class="dropdown-item" (click)="logout()" role="button">Logout</a>
+    </div>
 </ul>
 <div *ngIf="hasRouter('/')">
     <h3 class="bg-secondary">Seminar Management</h3><br><br>
     <strong>Loging with SSO Keycloak</strong><br>
     <button class="btn btn-outline-primary mt-2" (click)="onLogin()">keycloak SSO</button>
 </div>
+
 
