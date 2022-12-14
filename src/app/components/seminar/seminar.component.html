@@ -49,7 +49,7 @@
 
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="updateMode">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -73,7 +73,7 @@
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="addSeminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addSeminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="updateMode">
     <div class="modal-dialog" role="document">
         <!-- modal-content -->
         <div class="modal-content">
@@ -141,7 +141,7 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editeSeminarModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="editeSeminarModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true" *ngIf="updateMode">
     <div class="modal-dialog" role="document">
         <!-- modal-content -->
         <div class="modal-content">

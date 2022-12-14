@@ -16,17 +16,8 @@ import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.ser
 })
 export class SeminarComponent implements OnInit {
   public seminars: Seminar[];
-  public onToggleSeminar: Seminar = {
-    seminarnummer: 0,
-    seminarTitle: "string",
-    beginn: new Date(),
-    ende: new Date(),
-    kursinhalt: "string",
-    teilnehmeranzahl: 2,
-    seminarleiter: "string",
-    voraussetzung: "string",
-    seminarraum: {raumnummer: 0,  name: "", maximalePersonenanzahl:0, ausstattung: ""}
-  }
+  public onToggleSeminar: Seminar;
+  updateMode: boolean = false;
 
   public seminarraums: Seminarraum[];
 
@@ -111,6 +102,7 @@ export class SeminarComponent implements OnInit {
 
   public onToggleModal(seminar: Seminar) : void {
     this.onToggleSeminar = seminar;
+    this.updateMode = true;
   }
 
   public getAllSeminarraums() {
