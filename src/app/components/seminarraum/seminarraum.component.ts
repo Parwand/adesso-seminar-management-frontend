@@ -10,7 +10,8 @@ import { SeminarraumService } from 'src/app/services/seminarraum/seminarraum.ser
 })
 export class SeminarraumComponent implements OnInit {
   public seminarraums: Seminarraum[];
-  public onToggleSeminarraum: Seminarraum = {raumnummer: 0,  name: "", maximalePersonenanzahl:0, ausstattung: ""};
+  public onToggleSeminarraum: Seminarraum;
+  updateMode: boolean = false;
 
   constructor(private seminarraumService: SeminarraumService) { }
 
@@ -44,6 +45,7 @@ export class SeminarraumComponent implements OnInit {
 
   public onToggleModal(seminarraum: Seminarraum): void{
     this.onToggleSeminarraum = seminarraum;
+    this.updateMode = true;
   }
 
   public onSearchSeminarraum(key: string): void{
