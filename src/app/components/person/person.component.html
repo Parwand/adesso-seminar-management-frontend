@@ -48,21 +48,23 @@
                     <input type="date" ngModel= {{person.geburtsdatum}} name="geburtsdatum" class="form-control" id="geburtsdatum" required="">
                 </div>
                 <input type="hidden" ngModel= {{person.adresse?.id}} name="strasse_id" class="form-control" id="strasse">
-                <div>
-                    <label for="strasse">Straße</label>
-                    <input type="text" ngModel= {{person.adresse?.strasse}} name="strasse" class="form-control" id="strasse">
-                </div>
-                <div>
-                    <label for="strassennummer">Straßennummer</label>
-                    <input type="number" ngModel = {{person.adresse?.strassennummer}} name="strassennummer" class="form-control" id="strassennummer">
-                </div>
-                <div>
-                    <label for="plz">PLZ</label>
-                    <input type="text" ngModel = {{person.adresse?.plz}} name="plz" class="form-control" id="plz">
-                </div>
-                <div>
-                    <label for="strassennummer">Stadt</label>
-                    <input type="text" ngModel = {{person.adresse?.stadt}} name="stadt" class="form-control" id="stadt">
+                <div ngModelGroup="adresse" #adresse="ngModelGroup">
+                    <div>
+                        <label for="strasse">Straße</label>
+                        <input type="text" ngModel= {{person.adresse?.strasse}} name="strasse" class="form-control" id="strasse">
+                    </div>
+                    <div>
+                        <label for="strassennummer">Straßennummer</label>
+                        <input type="number" ngModel = {{person.adresse?.strassennummer}} name="strassennummer" class="form-control" id="strassennummer">
+                    </div>
+                    <div>
+                        <label for="plz">PLZ</label>
+                        <input type="text" ngModel = {{person.adresse?.plz}} name="plz" class="form-control" id="plz">
+                    </div>
+                    <div>
+                        <label for="strassennummer">Stadt</label>
+                        <input type="text" ngModel = {{person.adresse?.stadt}} name="stadt" class="form-control" id="stadt">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
