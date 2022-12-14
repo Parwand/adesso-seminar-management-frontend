@@ -44,8 +44,6 @@ export class SeminarComponent implements OnInit {
 
   public onAddSeminar(addForm: NgForm) {
     let seminar: Seminar = addForm.value;
-    let seminarraum: Seminarraum = {raumnummer: addForm.value.seminarraum, name: "", maximalePersonenanzahl: 2, ausstattung: ""}
-    seminar.seminarraum = seminarraum;
     this.seminarService.addSeminar(seminar).subscribe(
      {
       next: (value: Seminar) => {this.getAllSeminars(); addForm.reset()
@@ -58,8 +56,6 @@ export class SeminarComponent implements OnInit {
 
   public onUpdateSeminar(editeForm: NgForm) {
     let seminar: Seminar = editeForm.value;
-    let seminarraum: Seminarraum = {raumnummer: editeForm.value.seminarraum, name: "", maximalePersonenanzahl: 2, ausstattung: ""}
-    seminar.seminarraum = seminarraum;
     this.seminarService.updateSeminar(seminar).subscribe(
      {
       next: (value: Seminar) => {this.getAllSeminars(); console.log(value); editeForm.reset()
