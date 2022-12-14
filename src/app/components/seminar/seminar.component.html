@@ -86,7 +86,7 @@
         </div>
         <!-- modal-body -->
         <div class="modal-body">
-            <form #addForm="ngForm" (ngSubmit)="onAddSeminar(addForm)">
+            <form #addForm="ngForm">
                 <div>
                     <label for="add-seminarnummer"></label>
                     <input type="hidden" ngModel name="seminarnummer" class="form-control" id="add-seminarnummer">
@@ -131,7 +131,7 @@
                 <!-- modal-footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Hinzufügen</button>
+                    <button [disabled]="addForm.invalid" (click)="onAddSeminar(addForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Hinzufügen</button>
                 </div>
             </form>
         </div>
