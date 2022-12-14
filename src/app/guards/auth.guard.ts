@@ -49,9 +49,11 @@ export class AuthGuard extends KeycloakAuthGuard {
       next: (value) => {
         if(!value) {
           this.personService.savePerson(this.person).subscribe({
-            next: (value) => {this.person = value}, 
+            next: (person: Person) => {this.person = person}, 
             error: (e: HttpErrorResponse) => {console.log(e.message)}
           })
+        } else {
+          this.person = value;
         }
       },
       error: (error: HttpErrorResponse) => {console.log(error.message);
