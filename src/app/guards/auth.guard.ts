@@ -44,14 +44,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   private saveLoggedUser(): void {
-    const userDetails = this.getUserDetails();
-    
-    this.person = {
-      username: userDetails?.['preferred_username'],
-      vorname: userDetails?.['given_name'],
-      nachname: userDetails?.['family_name']
-    }
-
+    this.person = this.getLoggedUser();
     this.personService.getPersonByUsername(this.person.username).subscribe({  
       next: (value) => {
         if(!value) {
