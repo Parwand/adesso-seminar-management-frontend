@@ -23,6 +23,8 @@ export class AuthGuard extends KeycloakAuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
+    
+    
     this.saveLoggedUser();
     // Force the user to log in if currently unauthenticated.
     if (!this.authenticated) {
@@ -77,8 +79,8 @@ export class AuthGuard extends KeycloakAuthGuard {
     return userDetails?.['preferred_username'];
   }
 
-  public isLogged(): Promise<boolean> {
-    return this.keycloak.isLoggedIn();
+  public async isLogged(): Promise<boolean> {
+    return (await this.keycloak.isLoggedIn()).valueOf();
   }
 
   public getLoggedUser(): Person {
