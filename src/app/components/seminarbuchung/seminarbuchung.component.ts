@@ -39,7 +39,7 @@ export class SeminarbuchungComponent implements OnInit {
   
   public onSeminarbuchungStornieren(buchungsnummer: string): void {
     this.personService.seminarbuchungStornieren(buchungsnummer, this.person.id).subscribe({
-      next: (value: void) => {this.getBuchungen(); console.log(value);
+      next: (value: void) => {this.getBuchungen();
       }, 
       error: (e: HttpErrorResponse) =>{console.log(e.message);
       }
