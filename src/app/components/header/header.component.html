@@ -4,11 +4,14 @@
     <li><a routerLink="/seminarraum">Seminarraum</a></li>
     <li><a routerLink="/buchung">Seminarbuchung</a></li>
     <li><a [routerLink]="'/about'">About</a></li>
-    <li><a [routerLink]="'/user'">{{person.vorname}}&nbsp;{{person.nachname}}</a></li>
-    <li><a (click)="logout()" href="#">Abmelden</a></li>
+    <span *ngIf="isLoggedIn">
+        <li><a [routerLink]="'/user'">{{person.vorname}}&nbsp;{{person.nachname}}</a></li>
+        <li><a (click)="logout()" href="#">Abmelden</a></li>
+    </span>
+    
     <a href="https://www.adesso.de" target="_blank"><img src="assets/img/adesso-log.svg.png" width="150" height="50"></a>
     
-    <button 
+    <button *ngIf="isLoggedIn"
     class="btn btn-outline-secondary dropdown-toggle" 
     data-toggle="dropdown" 
     id="menu-dropdown"

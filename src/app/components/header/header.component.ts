@@ -11,13 +11,20 @@ import { Person } from 'src/app/interfaces/Person';
 })
 export class HeaderComponent implements OnInit {
   person: Person;
+  isLoggedIn: boolean = false;
 
   constructor(private keycloakService: KeycloakService, 
               private authGuard: AuthGuard,
               private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.setUser();
+    if((await this.authGuard.isLogged()).valueOf() === true) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+    
   }
 
   public logout(): void {
